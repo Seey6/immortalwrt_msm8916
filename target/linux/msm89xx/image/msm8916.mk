@@ -89,4 +89,14 @@ define Device/openstick-mf601
 endef
 TARGET_DEVICES += openstick-mf601
 
+define Device/openstick-sp970v13
+  $(Device/msm8916)
+  DEVICE_VENDOR := GeXin
+  DEVICE_MODEL := OpenStick SP970V13
+  DEVICE_DTS := msm8916-ufi-sp970v13
+  DEVICE_DTS_DIR := ../dts
+  DEVICE_PACKAGES := openstick-tweaks wpad-basic-wolfssl qcom-msm8916-modem-openstick-sp970-firmware qcom-msm8916-openstick-sp970-wcnss-firmware qcom-msm8916-wcnss-openstick-sp970-nv
+endef
+TARGET_DEVICES += openstick-sp970v13
+
 endif

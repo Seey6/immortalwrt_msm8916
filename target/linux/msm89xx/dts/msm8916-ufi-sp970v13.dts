@@ -1,0 +1,82 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
+/dts-v1/;
+
+#include "msm8916-ufi.dtsi"
+
+/ {
+	model = "SP970V13 4G Modem Stick";
+	compatible = "GeXing,sp970v13", "qcom,msm8916";
+	leds: leds {
+		sim_en {
+			label = "sim:en";
+			gpios = <&msmgpio 120 GPIO_ACTIVE_HIGH>;
+			default-state = "on";
+		};
+
+		sim_sel1 {
+			label = "sim:sel1";
+			gpios = <&msmgpio 114 GPIO_ACTIVE_HIGH>;
+			default-state = "off";
+		};
+
+		sim_sel2 {
+                        label = "sim:sel2";
+                        gpios = <&msmgpio 26 GPIO_ACTIVE_HIGH>;
+                        default-state = "off";
+                };
+	};
+};
+
+&button_restart {
+	gpios = <&msmgpio 107 GPIO_ACTIVE_HIGH>;
+};
+
+&led_r {
+	gpios = <&msmgpio 9 GPIO_ACTIVE_HIGH>;
+};
+
+&led_g {
+	gpios = <&msmgpio 10 GPIO_ACTIVE_HIGH>;
+};
+
+&led_b {
+	gpios = <&msmgpio 28 GPIO_ACTIVE_HIGH>;
+};
+
+/*&mpss {
+	pinctrl-0 = <&sim_ctrl_default>;
+	pinctrl-names = "default";
+};*/
+
+&button_default {
+	pins = "gpio107";
+	bias-pull-down;
+};
+
+&gpio_leds_default {
+	pins = "gpio9","gpio10","gpio28","gpio26","gpio114","gpio120";
+};
+
+/* This selects the external SIM card slot by default */
+/*&msmgpio {
+	sim_ctrl_default: sim-ctrl-default-state {
+		esim-sel-pins {
+			pins = "gpio0", "gpio3";
+			bias-disable;
+			output-low;
+		};
+
+		sim-en-pins {
+			pins = "gpio1";
+			bias-disable;
+			output-low;
+		};
+
+		sim-sel-pins {
+			pins = "gpio2";
+			bias-disable;
+			output-high;
+		};
+	};
+};*/
